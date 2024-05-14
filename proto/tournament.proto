@@ -2,19 +2,12 @@ syntax = "proto3";
 
 package tournament;
 
-service TournamentRegistration {
-    rpc RegisterPlayer (Player) returns (Player);
-    rpc ReadPlayersByTeam (TeamPlayersRequest) returns (PlayerResponse);
-    rpc UpdatePlayer (UpdatePlayerRequest) returns (Player);
-    rpc DeletePlayer (DeletePlayerRequest) returns (Player);
-}
-
 message Player {
     string name = 1;
     string role = 2;
     int32 age = 3;
     string team_name = 4;
-    string region = 5;  // New field added
+    string region = 5;
 }
 
 message TeamPlayersRequest {
@@ -31,10 +24,53 @@ message UpdatePlayerRequest {
     string new_name = 3;
     string role = 4;
     int32 age = 5;
-    string region = 6;  // New field added
+    string region = 6;
 }
 
 message DeletePlayerRequest {
-    string name = 1;
-    string team_name = 2;
+    string team_name = 1;
+    string name = 2;
+}
+
+message Match {
+    string team1 = 1;
+    string team2 = 2;
+}
+
+message BracketResponse {
+    repeated Match matches = 1;
+}
+
+message ScheduleMatchRequest {
+    string team1 = 1;
+    string team2 = 2;
+    string scheduled_time = 3;
+}
+
+message ScheduleMatchResponse {
+    string team1 = 1;
+    string team2 = 2;
+    string scheduled_time = 3;
+}
+
+message Empty {}
+
+message ScheduledMatch {
+    string scheduled_time = 1;
+    string team_1 = 2;
+    string team_2 = 3;
+}
+
+message ScheduledMatchesResponse {
+    repeated ScheduledMatch matches = 1;
+}
+
+service TournamentRegistration {
+    rpc RegisterPlayer(Player) returns (Player) {}
+    rpc ReadPlayersByTeam(TeamPlayersRequest) returns (PlayerResponse) {}
+    rpc UpdatePlayer(UpdatePlayerRequest) returns (Player) {}
+    rpc DeletePlayer(DeletePlayerRequest) returns (Player) {}
+    rpc CreateBracket(CreateBracketRequest) returns (BracketResponse) {}
+    rpc ScheduleMatch(ScheduleMatchRequest) returns (ScheduleMatchResponse) {}
+    rpc ReadScheduledMatches(Empty) returns (ScheduledMatchesResponse) {}
 }

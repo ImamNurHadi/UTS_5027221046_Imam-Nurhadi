@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10tournament.proto\x12\ntournament\"D\n\x06Player\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04role\x18\x02 \x01(\t\x12\x0b\n\x03\x61ge\x18\x03 \x01(\x05\x12\x11\n\tteam_name\x18\x04 \x01(\t\"c\n\x13UpdatePlayerRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08new_name\x18\x02 \x01(\t\x12\x0c\n\x04role\x18\x03 \x01(\t\x12\x0b\n\x03\x61ge\x18\x04 \x01(\x05\x12\x11\n\tteam_name\x18\x05 \x01(\t\"6\n\x13\x44\x65letePlayerRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tteam_name\x18\x02 \x01(\t\"\'\n\x12TeamPlayersRequest\x12\x11\n\tteam_name\x18\x01 \x01(\t\"5\n\x0ePlayerResponse\x12#\n\x07players\x18\x01 \x03(\x0b\x32\x12.tournament.Player2\xb5\x02\n\x16TournamentRegistration\x12:\n\x0eRegisterPlayer\x12\x12.tournament.Player\x1a\x12.tournament.Player\"\x00\x12Q\n\x11ReadPlayersByTeam\x12\x1e.tournament.TeamPlayersRequest\x1a\x1a.tournament.PlayerResponse\"\x00\x12\x45\n\x0cUpdatePlayer\x12\x1f.tournament.UpdatePlayerRequest\x1a\x12.tournament.Player\"\x00\x12\x45\n\x0c\x44\x65letePlayer\x12\x1f.tournament.DeletePlayerRequest\x1a\x12.tournament.Player\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10tournament.proto\x12\ntournament\"T\n\x06Player\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04role\x18\x02 \x01(\t\x12\x0b\n\x03\x61ge\x18\x03 \x01(\x05\x12\x11\n\tteam_name\x18\x04 \x01(\t\x12\x0e\n\x06region\x18\x05 \x01(\t\"\'\n\x12TeamPlayersRequest\x12\x11\n\tteam_name\x18\x01 \x01(\t\"5\n\x0ePlayerResponse\x12#\n\x07players\x18\x01 \x03(\x0b\x32\x12.tournament.Player\"s\n\x13UpdatePlayerRequest\x12\x11\n\tteam_name\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08new_name\x18\x03 \x01(\t\x12\x0c\n\x04role\x18\x04 \x01(\t\x12\x0b\n\x03\x61ge\x18\x05 \x01(\x05\x12\x0e\n\x06region\x18\x06 \x01(\t\"6\n\x13\x44\x65letePlayerRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tteam_name\x18\x02 \x01(\t\"*\n\x14\x43reateBracketRequest\x12\x12\n\nteam_names\x18\x01 \x03(\t\"%\n\x05Match\x12\r\n\x05team1\x18\x01 \x01(\t\x12\r\n\x05team2\x18\x02 \x01(\t\"5\n\x0f\x42racketResponse\x12\"\n\x07matches\x18\x01 \x03(\x0b\x32\x11.tournament.Match\"L\n\x14ScheduleMatchRequest\x12\r\n\x05team1\x18\x01 \x01(\t\x12\r\n\x05team2\x18\x02 \x01(\t\x12\x16\n\x0escheduled_time\x18\x03 \x01(\t\"M\n\x15ScheduleMatchResponse\x12\r\n\x05team1\x18\x01 \x01(\t\x12\r\n\x05team2\x18\x02 \x01(\t\x12\x16\n\x0escheduled_time\x18\x03 \x01(\t2\xd3\x03\n\x16TournamentRegistration\x12\x38\n\x0eRegisterPlayer\x12\x12.tournament.Player\x1a\x12.tournament.Player\x12O\n\x11ReadPlayersByTeam\x12\x1e.tournament.TeamPlayersRequest\x1a\x1a.tournament.PlayerResponse\x12\x43\n\x0cUpdatePlayer\x12\x1f.tournament.UpdatePlayerRequest\x1a\x12.tournament.Player\x12\x43\n\x0c\x44\x65letePlayer\x12\x1f.tournament.DeletePlayerRequest\x1a\x12.tournament.Player\x12N\n\rCreateBracket\x12 .tournament.CreateBracketRequest\x1a\x1b.tournament.BracketResponse\x12T\n\rScheduleMatch\x12 .tournament.ScheduleMatchRequest\x1a!.tournament.ScheduleMatchResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -22,15 +22,25 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'tournament_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
   _globals['_PLAYER']._serialized_start=32
-  _globals['_PLAYER']._serialized_end=100
-  _globals['_UPDATEPLAYERREQUEST']._serialized_start=102
-  _globals['_UPDATEPLAYERREQUEST']._serialized_end=201
-  _globals['_DELETEPLAYERREQUEST']._serialized_start=203
-  _globals['_DELETEPLAYERREQUEST']._serialized_end=257
-  _globals['_TEAMPLAYERSREQUEST']._serialized_start=259
-  _globals['_TEAMPLAYERSREQUEST']._serialized_end=298
-  _globals['_PLAYERRESPONSE']._serialized_start=300
-  _globals['_PLAYERRESPONSE']._serialized_end=353
-  _globals['_TOURNAMENTREGISTRATION']._serialized_start=356
-  _globals['_TOURNAMENTREGISTRATION']._serialized_end=665
+  _globals['_PLAYER']._serialized_end=116
+  _globals['_TEAMPLAYERSREQUEST']._serialized_start=118
+  _globals['_TEAMPLAYERSREQUEST']._serialized_end=157
+  _globals['_PLAYERRESPONSE']._serialized_start=159
+  _globals['_PLAYERRESPONSE']._serialized_end=212
+  _globals['_UPDATEPLAYERREQUEST']._serialized_start=214
+  _globals['_UPDATEPLAYERREQUEST']._serialized_end=329
+  _globals['_DELETEPLAYERREQUEST']._serialized_start=331
+  _globals['_DELETEPLAYERREQUEST']._serialized_end=385
+  _globals['_CREATEBRACKETREQUEST']._serialized_start=387
+  _globals['_CREATEBRACKETREQUEST']._serialized_end=429
+  _globals['_MATCH']._serialized_start=431
+  _globals['_MATCH']._serialized_end=468
+  _globals['_BRACKETRESPONSE']._serialized_start=470
+  _globals['_BRACKETRESPONSE']._serialized_end=523
+  _globals['_SCHEDULEMATCHREQUEST']._serialized_start=525
+  _globals['_SCHEDULEMATCHREQUEST']._serialized_end=601
+  _globals['_SCHEDULEMATCHRESPONSE']._serialized_start=603
+  _globals['_SCHEDULEMATCHRESPONSE']._serialized_end=680
+  _globals['_TOURNAMENTREGISTRATION']._serialized_start=683
+  _globals['_TOURNAMENTREGISTRATION']._serialized_end=1150
 # @@protoc_insertion_point(module_scope)

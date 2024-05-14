@@ -31,7 +31,8 @@ if _version_not_supported:
 
 
 class TournamentRegistrationStub(object):
-    """Missing associated documentation comment in .proto file."""
+    """Define the TournamentRegistration service
+    """
 
     def __init__(self, channel):
         """Constructor.
@@ -59,10 +60,21 @@ class TournamentRegistrationStub(object):
                 request_serializer=tournament__pb2.DeletePlayerRequest.SerializeToString,
                 response_deserializer=tournament__pb2.Player.FromString,
                 _registered_method=True)
+        self.CreateBracket = channel.unary_unary(
+                '/tournament.TournamentRegistration/CreateBracket',
+                request_serializer=tournament__pb2.CreateBracketRequest.SerializeToString,
+                response_deserializer=tournament__pb2.BracketResponse.FromString,
+                _registered_method=True)
+        self.ScheduleMatch = channel.unary_unary(
+                '/tournament.TournamentRegistration/ScheduleMatch',
+                request_serializer=tournament__pb2.ScheduleMatchRequest.SerializeToString,
+                response_deserializer=tournament__pb2.ScheduleMatchResponse.FromString,
+                _registered_method=True)
 
 
 class TournamentRegistrationServicer(object):
-    """Missing associated documentation comment in .proto file."""
+    """Define the TournamentRegistration service
+    """
 
     def RegisterPlayer(self, request, context):
         """Missing associated documentation comment in .proto file."""
@@ -83,6 +95,18 @@ class TournamentRegistrationServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def DeletePlayer(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CreateBracket(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ScheduleMatch(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -111,6 +135,16 @@ def add_TournamentRegistrationServicer_to_server(servicer, server):
                     request_deserializer=tournament__pb2.DeletePlayerRequest.FromString,
                     response_serializer=tournament__pb2.Player.SerializeToString,
             ),
+            'CreateBracket': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateBracket,
+                    request_deserializer=tournament__pb2.CreateBracketRequest.FromString,
+                    response_serializer=tournament__pb2.BracketResponse.SerializeToString,
+            ),
+            'ScheduleMatch': grpc.unary_unary_rpc_method_handler(
+                    servicer.ScheduleMatch,
+                    request_deserializer=tournament__pb2.ScheduleMatchRequest.FromString,
+                    response_serializer=tournament__pb2.ScheduleMatchResponse.SerializeToString,
+            ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
             'tournament.TournamentRegistration', rpc_method_handlers)
@@ -119,7 +153,8 @@ def add_TournamentRegistrationServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class TournamentRegistration(object):
-    """Missing associated documentation comment in .proto file."""
+    """Define the TournamentRegistration service
+    """
 
     @staticmethod
     def RegisterPlayer(request,
@@ -219,6 +254,60 @@ class TournamentRegistration(object):
             '/tournament.TournamentRegistration/DeletePlayer',
             tournament__pb2.DeletePlayerRequest.SerializeToString,
             tournament__pb2.Player.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def CreateBracket(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/tournament.TournamentRegistration/CreateBracket',
+            tournament__pb2.CreateBracketRequest.SerializeToString,
+            tournament__pb2.BracketResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ScheduleMatch(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/tournament.TournamentRegistration/ScheduleMatch',
+            tournament__pb2.ScheduleMatchRequest.SerializeToString,
+            tournament__pb2.ScheduleMatchResponse.FromString,
             options,
             channel_credentials,
             insecure,
