@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package tournament;
+
+service TournamentRegistration {
+    rpc RegisterPlayer (Player) returns (Player);
+    rpc ReadPlayersByTeam (TeamPlayersRequest) returns (PlayerResponse);
+    rpc UpdatePlayer (UpdatePlayerRequest) returns (Player);
+    rpc DeletePlayer (DeletePlayerRequest) returns (Player);
+}
+
+message Player {
+    string name = 1;
+    string role = 2;
+    int32 age = 3;
+    string team_name = 4;
+    string region = 5;  // New field added
+}
+
+message TeamPlayersRequest {
+    string team_name = 1;
+}
+
+message PlayerResponse {
+    repeated Player players = 1;
+}
+
+message UpdatePlayerRequest {
+    string team_name = 1;
+    string name = 2;
+    string new_name = 3;
+    string role = 4;
+    int32 age = 5;
+    string region = 6;  // New field added
+}
+
+message DeletePlayerRequest {
+    string name = 1;
+    string team_name = 2;
+}
