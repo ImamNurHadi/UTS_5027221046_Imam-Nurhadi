@@ -267,16 +267,6 @@ class PlayerApp:
             self.schedule_text.delete(1.0, tk.END)
             self.schedule_text.insert(tk.END, f"Error: {e.code()} - {e.details()}")
     
-    def read_scheduled_matches(self):
-        try:
-            response = self.stub.ReadScheduledMatches(tournament_pb2.Empty())
-            self.schedule_text.delete(1.0, tk.END)
-            self.schedule_text.insert(tk.END, "Scheduled Matches:\n")
-            for match in response.matches:
-                self.schedule_text.insert(tk.END, f"Scheduled Time: {match.scheduled_time} - {match.team_1} vs {match.team_2}\n")
-        except grpc.RpcError as e:
-            self.schedule_text.delete(1.0, tk.END)
-            self.schedule_text.insert(tk.END, f"Error: {e.code()} - {e.details()}")
 
 def main():
     channel = grpc.insecure_channel('localhost:50051')
